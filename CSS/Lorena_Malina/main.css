@@ -1,0 +1,119 @@
+﻿body {
+	margin: 0;
+	background: url(fondo.jpg) no-repeat fixed center center;
+	background-size:100% 100%;
+	background-attachment:fixed;  
+}
+
+@font-face {
+	font-family: Expressa-Regular;
+	src: url(Expressa-Regular.ttf);
+}
+
+header {
+}
+
+span {
+	color:white;
+}
+
+.header1 {
+	float: left;
+	width:70%;
+	color:white;
+	height:40px;
+	background-image:linear-gradient(to left, rgba(255,0,0,0),#20c8f5);
+}
+
+.header2 {
+	float: left;
+	width:30%;
+	text-align: right;
+	background-image:linear-gradient(to right, rgba(255,0,0,0),#20c8f5);
+}
+
+.section-columns {}
+.section-columns > div {
+	width:49%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.column1 {
+	height:40px;
+}
+
+.column2 {
+	height:40px;
+
+}
+
+.p1 {
+	font-size: 35px;
+	font-family:Verdana;
+}
+
+.p2 {
+	font-weight: bold;
+	font-family:Verdana;
+	font-size: 28px;
+}
+
+.p3 {
+	font-weight: bold;
+	font-size:16px;
+	font-family:Verdana;
+	text-align: right;
+	color:white;
+}
+
+.p4 {
+	font-weight: bold;
+	color: #022d39;
+	font-family:Verdana;
+	font-size:16px;
+	text-align: right;
+}
+
+.p5 {
+	font-weight: bold;
+	color: white;
+	font-family:Verdana;
+	font-size:16px;
+	text-align: right;
+}
+
+.title1 {
+	margin:0;
+	font-family:Expressa-Regular;
+	text-align: center;
+	font-size: 1000%; 
+}
+
+.title2 {
+	margin:0;
+	text-align: center;
+	font-size: 21px;
+	color: white;
+	font-family:Verdana;
+	font-weight: bold;
+}
+
+.title3 {
+	margin:0;
+	text-align: center;
+	font-size: 80px;
+	color: yellow;
+	font-family:Verdana;
+	font-weight: bold;
+}
+
+footer {
+	background-color:black;
+	color:white;
+	text-align:center;
+	clear:both;
+	font-weight: bold;
+	font-family:Verdana;
+	font-size:24px;
+}
