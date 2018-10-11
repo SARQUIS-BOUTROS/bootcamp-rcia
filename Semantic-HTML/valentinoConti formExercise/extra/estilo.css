@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+}
+em {
+	color: darkred;
+}
+fieldset {
+	border: 0px;
+}
+#registerTitle {
+	text-decoration: underline;
+}
+#genderList {
+	list-style: none;
+}
