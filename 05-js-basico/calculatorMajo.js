@@ -1,9 +1,4 @@
-/*
-* calculator(val1, val2, operator);
-* calculator(val1, operator) use lastest result
-*/
-
-function calculator(){
+var calculator = function (){
     var resultado=0;
     return function (Val1, operacion, Val2) {
     if ( Val2 == undefined){
@@ -39,6 +34,4 @@ function calculator(){
     };
     return resultado;
     }
-    
-} ();
-
+    }() ;
