@@ -1,0 +1,104 @@
+
+
+.contenedor {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	text-align: center;
+	padding: 10%;
+
+	max-width: 1000px;
+	height: 1000px;
+	margin: 20 auto;
+
+
+
+}
+
+.header, .menu, .column1, .column2, .column3, .footer {
+	flex-grow: 1;
+	flex-basis: 100%;
+	padding: 10%;
+}
+
+@media all and (min-width: 480px) {
+
+}
+
+@media all and (min-width: 600px) {
+	
+}
+
+@media all and (min-width: 936px) {
+
+}
+
+header {
+	margin:20px 0;
+}
+
+.header {
+	background: #f2fe03;
+	text-align: center;
+	border-radius:10px;
+}
+
+.menu {
+	float:left;
+	width: 150px;
+	height: 80px;
+	background: #f5870b;
+	border-radius:10px;
+	list-style:none;
+	padding: 0;
+	margin: 0;
+}
+
+.column1 {
+	float:left;
+	width: 200px;
+	height: 300px;
+	background: blue;
+	border-radius:10px;
+
+}
+
+.column2 {
+	float:left;
+	width: 300px;
+	height: 150px;
+	background: blue;
+	border-radius:10px;
+}
+
+.column3 {
+	float:left;
+	width: 300px;
+	height: 150px;
+	background: blue;
+	border-radius:10px;
+}
+
+.footer {
+	clear: both;
+	float:left;
+	margin-top: 
+	box-sizing:border-box;
+	width: 100%;
+	padding: 20px;
+	background: #f9a8e5;
+	border-radius:10px;
+	
+}
+
+@media screen and (max-width: 936px) {
+
+}
+
+@media screen and (max-width: 600px) {
+	
+}
+
+@media screen and (max-width: 460px) {
+	
+}
