@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link type="text/css" href="estilo.css" rel="stylesheet">
+</head>
+<body>
+
+        <body onload="init();">
+                <table class="calculadora">
+                <tr>
+                  <td colspan="4"><span id="resultado"></span></td>
+                </tr>
+                <tr>
+                  <td><button  value="7" onclick="boton(value)">7</button></td>
+                  <td><button  value="8" onclick="boton(value)">8</button></td>
+                  <td><button  value="9" onclick="boton(value)">9</button></td>
+                  <td><button id="division">/</button></td>
+                </tr>
+                <tr>
+                  <td><button value="4" onclick="boton(value)">4</button></td>
+                  <td><button value="5" onclick="boton(value)">5</button></td>
+                  <td><button value="6" onclick="boton(value)">6</button></td>
+                  <td><button id="multiplicacion">*</button></td>
+                </tr>
+                <tr>
+                  <td><button value="1" onclick="boton(value)">1</button></td>
+                  <td><button value="2" onclick="boton(value)">2</button></td>
+                  <td><button value="3" onclick="boton(value)">3</button></td>
+                  <td><button id="resta">-</button></td>
+                </tr>
+                <tr>
+                  <td><button value="0" onclick="boton(value)">0</button></td>
+                  <td><button id="igual">=</button></td>
+                  <td><button id="reset">C</button></td>
+                  <td><button id="suma">+</button></td>
+                </tr>
+
+                </table>
+
+
+
+    <script src="operadores.js"></script>
+</body>
+</html>
