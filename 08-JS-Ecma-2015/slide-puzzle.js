@@ -1,10 +1,12 @@
-
-
+window.onload = function() {
+  document.addEventListener("keydown", arrowKey);
+  actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+};
 
 var move = (function(){
 
 	empty = 16;
-	actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+	
 	posible = [12,15];
 	left = [1,5,9,13];
 	right = [4,8,12,16];
@@ -107,3 +109,38 @@ var move = (function(){
 };
 
 })();
+
+function arrowKey(e){
+	
+	switch(e.keyCode) {
+        case 38: // up
+            arrowMove(4);
+            break;
+        case 40: // down
+            arrowMove(-4);
+            break;
+        case 39: // right
+            arrowMove(-1);
+            break;
+        case 37: // left
+            arrowMove(1);
+            break;
+        default:
+        	break;
+    } 
+};
+
+function arrowMove(to){
+	emp = actual.indexOf(16)+1;
+
+	toMove = emp + to;
+
+	toMoveVal = actual[toMove-1];
+
+	move(toMoveVal);
+
+	/*if(actual.includes(toMoveVal)){
+		wh = actual.indexOf(toMoveVal)+1;
+		move(wh);
+	}*/
+};
