@@ -21,6 +21,8 @@ body{
 #puzzle{
 	display: grid;
 	grid-template-columns: auto auto auto auto;
+
+	position:relative;
 }
 
 .piece{
@@ -79,4 +81,18 @@ body{
 .complete .piece{
 	border: 1px solid rgba(255,0,0,0.5);
 	background-color: rgba(255,0,0,0.2);
+}
+
+#cantMoves{
+	width: 50px;
+}
+
+#controls{
+	position: absolute;
+	top:220px;
+}
+
+#controls label{
+	font-size: 16px;
+	color:black;
 }

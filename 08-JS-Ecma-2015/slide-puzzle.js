@@ -77,8 +77,10 @@ var move = (function(){
 			document.getElementById("puzzle").className = "";
 		}
 
-		
-	};
+		return true;
+	}else{
+		return false;
+	}
 
 	
 
@@ -144,3 +146,27 @@ function arrowMove(to){
 		move(wh);
 	}*/
 };
+
+function shuffle(){
+	cantMoves = document.getElementById("cantMoves").value;
+
+	for(i = 0; i < cantMoves; i++){
+
+			console.log(i);
+
+			emp = actual.indexOf(16)+1;
+
+			posiblePos = [emp+1,emp-1,emp+4,emp-4];
+
+			posibleVals = posiblePos.map(pos => actual[pos-1]);
+
+			posibleVals = posibleVals.filter(pos => pos > 0);
+
+			posibleVals = posibleVals.filter(pos => pos < 17);
+
+			sel = Math.floor(Math.random() * posibleVals.length);
+
+			move(posibleVals[sel]);
+		
+	}
+}
