@@ -1,0 +1,63 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
+html{
+	height: 100%;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100%;
+
+	font-size: 20px;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
+#puzzle{
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+}
+
+.piece{
+	width: 50px;
+	height: 50px;
+	border: 1px solid #ccc;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+}
+
+#piece1, #piece2, #piece3, #piece4, #piece5, #piece6, #piece7, #piece8, #piece9, #piece10, #piece11, #piece12, #piece13, #piece14, #piece15{
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+}
+
+#piece-empty{
+	visibility: hidden;
+}
+
+#piece15{
+	/*left: 0px;
+	position: relative;*/
+}
+
+#piece11{
+	/*top:52px;*/
+}
+
+#piece10{
+	/*left:52px;*/
+}
