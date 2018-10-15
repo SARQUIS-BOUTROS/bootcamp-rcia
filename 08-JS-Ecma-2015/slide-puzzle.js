@@ -15,23 +15,9 @@ var move = (function(){
 
 	return function(val){
 
-	/*if(typeof empty == 'undefined'){
-		empty = 16;
-	};
-
-	if(typeof actual == 'undefined'){
-		actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-	};
-
-	if(typeof posible == 'undefined'){
-		posible = [12,15];
-	};*/
-
 	pos = actual.indexOf(val)+1;
 
 	where = empty - pos;
-
-	//val = actual[pos-1];
 
 	elem = document.getElementById("piece"+val);
 
@@ -142,10 +128,6 @@ function arrowMove(to){
 
 	move(toMoveVal);
 
-	/*if(actual.includes(toMoveVal)){
-		wh = actual.indexOf(toMoveVal)+1;
-		move(wh);
-	}*/
 };
 
 function shuffle(){
