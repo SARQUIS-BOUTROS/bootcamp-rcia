@@ -8,6 +8,7 @@ var move = (function(){
 	posible = [12,15];
 	left = [1,5,9,13];
 	right = [4,8,12,16];
+	complete = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 
 	return function(val){
 
@@ -67,6 +68,14 @@ var move = (function(){
 		actual[empty-1] = val;
 
 		empty = pos;
+
+		if(JSON.stringify(actual) === JSON.stringify(complete)){
+			document.getElementById("puzzle").className = "complete";
+		}else{
+			document.getElementById("puzzle").className = "";
+		}
+
+		
 	};
 
 	
