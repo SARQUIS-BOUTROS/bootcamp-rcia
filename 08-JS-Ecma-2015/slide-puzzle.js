@@ -1,13 +1,17 @@
 
-empty = 16;
-actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-posible = [12,15];
-left = [1,5,9,13];
-right = [4,8,12,16];
 
-function move(val){
 
-	if(typeof empty == 'undefined'){
+var move = (function(){
+
+	empty = 16;
+	actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+	posible = [12,15];
+	left = [1,5,9,13];
+	right = [4,8,12,16];
+
+	return function(val){
+
+	/*if(typeof empty == 'undefined'){
 		empty = 16;
 	};
 
@@ -17,7 +21,7 @@ function move(val){
 
 	if(typeof posible == 'undefined'){
 		posible = [12,15];
-	};
+	};*/
 
 	pos = actual.indexOf(val)+1;
 
@@ -92,3 +96,5 @@ function move(val){
 	}
 	
 };
+
+})();
