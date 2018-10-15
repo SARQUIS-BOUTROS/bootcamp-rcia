@@ -1,6 +1,8 @@
 window.onload = function() {
   document.addEventListener("keydown", arrowKey);
   actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  left = [1,5,9,13];
+  right = [4,8,12,16];
 };
 
 var move = (function(){
@@ -8,8 +10,7 @@ var move = (function(){
 	empty = 16;
 	
 	posible = [12,15];
-	left = [1,5,9,13];
-	right = [4,8,12,16];
+
 	complete = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 
 	return function(val){
@@ -152,11 +153,17 @@ function shuffle(){
 
 	for(i = 0; i < cantMoves; i++){
 
-			console.log(i);
-
 			emp = actual.indexOf(16)+1;
 
-			posiblePos = [emp+1,emp-1,emp+4,emp-4];
+			posiblePos = [emp+4,emp-4];
+
+			if(!(left.includes(emp+1))){
+				posiblePos = posiblePos.concat([emp+1]);
+			};
+
+			if(!(right.includes(emp-1))){
+				posiblePos = posiblePos.concat([emp-1]);
+			};
 
 			posibleVals = posiblePos.map(pos => actual[pos-1]);
 
