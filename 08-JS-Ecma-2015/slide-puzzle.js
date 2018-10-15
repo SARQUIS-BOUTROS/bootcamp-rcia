@@ -1,5 +1,11 @@
 
-function move(pos){
+empty = 16;
+actual = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+posible = [12,15];
+left = [1,5,9,13];
+right = [4,8,12,16];
+
+function move(val){
 
 	if(typeof empty == 'undefined'){
 		empty = 16;
@@ -13,13 +19,25 @@ function move(pos){
 		posible = [12,15];
 	};
 
+	pos = actual.indexOf(val)+1;
+
 	where = empty - pos;
 
-	val = actual[pos-1];
+	//val = actual[pos-1];
 
 	elem = document.getElementById("piece"+val);
 
 	band = true;
+
+	if(where == -1 && left.includes(pos)){
+		band = false;
+		where = 0;
+	};
+
+	if(where == 1 && right.includes(pos)){
+		band = false;
+		where = 0;
+	};
 
 	switch(where){
 		case -1:
@@ -32,7 +50,6 @@ function move(pos){
 			moveDown(elem);
 			break;
 		case -4:
-			console.log('up ok.')
 			moveUp(elem);
 			break;
 		default:
