@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.squares {
+  background-color: #944888b8;
+  color: beige;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 300px;
+}
+.squares div {
+  box-sizing: border-box;
+  width: 33.33333333%;
+  height: 60px;
+  padding-top: 10px;
+  font-size: 2em;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #96bfb3;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 100%
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    width: 900px;
+  }
+}

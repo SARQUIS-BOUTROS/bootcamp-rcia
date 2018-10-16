@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" href="extra/estilo.css">
+</head>
+<body>
+	<h2 id="registerTitle">Register</h2>
+
+	<form aria-labelledby="registerTitle" action="extra/process.html">
+		<div>
+	        <h3>Name</h3>
+			<label for="firstname">First Name: </label><input type="text" id="firstname" name="firstname" required /><em>[required]</em><br>
+			<label for="lastname">Last Name: </label><input type="text" id="lastname" name="lastname" required /><em>[required]</em><br>
+		</div>
+		<div>
+			<fieldset>
+	        <legend id="gender">Gender</legend>
+	    	<ul id="genderList" aria-labelledby="gender">
+	    		<li>
+		            <input type="radio" id="male" name="genderOption" value="male" />
+					<img src="extra/masculino.png" alt="" width="13" />
+		            <label for="male">Male</label>
+		        </li>
+
+	    		<li>
+		            <input type="radio" id="female" name="genderOption" value="female" />
+					<img src="extra/femenino.png" alt="" width="13" />
+		            <label for="female">Female</label>
+		        </li>
+
+	    		<li>
+		            <input type="radio" id="undefined" name="genderOption" value="undefined" checked />
+					<img src="extra/indefinido.png" alt="" width="13" />
+		            <label for="undefined">Does not answer</label>
+		        </li>
+			</ul>
+			</fieldset>
+		</div>
+		<div>
+			<h3>Birthday</h3>
+			<input type="number" id="day" name="day" min="1" max="31" placeholder="11">
+			<label for="day">Day</label><br>
+			<input type="number" id="month"  name="month" min="1" max="12" placeholder="10">
+			<label for="month">Month</label><br>
+			<input type="number" id="year" name="year" min="1910" max="2002" placeholder="1997">
+			<label for="year">Year</label><br>
+		</div>
+		<div>
+			<h3>Account Info</h3>
+			<label for="account">Username: </label><input type="text" name="account" id="account" required /><em>[required]</em><br>
+			<label for="pw">Password: </label><input type="password" name="pw" id="pw" required /><em>[required]</em><br>
+			<label for="pw2">Verify Password: </label><input type="password" name="pw2" id="pw2" required /><em>[required]</em><br>
+		</div>
+		<div>
+			<br><br>
+			<input type="submit" name="submitted" value="Register">
+			<input type="reset" value="Reset">
+		</div>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="Antonio María Díaz Soto">
+  <meta name="viewport" content="width=device-width">
+  <title >Dia 2 HTML A11Y Form</title>
+</head>
+<body>
+<header>
+  <h1 id="inicio">Registro de Usuarios</h1>
+</header>
+  <article>
+    <form>
+      <div>
+        <h2>Los Campos Obligatorios se encuentran acompañados de <strong><abbr title="required">*</abbr></strong>.</h2>
+      </div>
+      <ol>
+        <li>
+        <label for="nombre">Nombre: </label>
+        <input aria-label="Ingrese su Nombre" id="nombre" type="text" name="nombre"/>
+      </li>
+      <li>
+        <label for="apellido">Apellido: </label>
+        <input aria-label="Ingrese su Apellido" id="apellido" type="text" name="apellido"/>
+      </li>
+      <li>
+        <label for="dni">DNI: </label>
+        <input aria-label="Ingrese Numero de Documento" id="dni" type="text" name="dni" size="8" required />
+        <strong><abbr title="obligatorio">*</abbr></strong>  
+      </li>
+      <li>
+        <label for="usuario">Usuario: </label>
+        <input aria-label="Ingrese un Usuario para su identificacion" id="usuario" type="text" name="nombreusuario" required />
+        <strong><abbr title="obligatorio">*</abbr></strong>
+      </li>
+      <li>
+        <label for="contraseña">Contraseña: </label>
+        <input aria-label="Ingrese una contraseña" id="contraseña" type="password" name="contraseña" required />
+        <strong><abbr title="obligatorio">*</abbr></strong>
+      </li>
+      <li>
+        <label for="idnacimiento">Fecha de Nacimiento: </label>
+        <input type="text" aria-label="Ingrese su fecha de nacimiento de forma numerica empezando por el dia y separado con barras" id="idnacimiento" name="nacimiento" maxlength="10" /><em> formateada como dd/mm/yyyy </em>
+      </li>
+    </ol>
+  <fieldset>
+      <legend>Sexo</legend>
+      <ul>
+        <li>
+          <label for="hombre">
+            <input type="radio" id="hombre" name="sexo" value="H" checked="checked" />
+            Hombre
+          </label>
+        </li>
+        <li>
+          <label for="mujer">
+            <input type="radio" id="mujer" name="sexo" value="M" />
+            Mujer
+          </label>
+        </li>
+      </ul>
+    </fieldset>  
+    <input type="submit" value="Enviar">
+</form>
+<section>
+  <button type="button">Add</button>
+</section>
+  </article>
+<footer>
+  <ul>
+    <li>
+        <a aria-label="Volver al Inicio de este artículo" href="#inicio2">Ir al inicio de este artículo</a>
+    </li>
+  </ul>
+</footer>
+</body>
+</html>

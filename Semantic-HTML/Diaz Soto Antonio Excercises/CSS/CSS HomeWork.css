@@ -1,0 +1,70 @@
+body  {
+    margin: auto;
+    height: 660px;
+    width: 660px;
+}
+@font-face{
+    font-family: Expressa;
+    src: url('Expressa-Regular.ttf');
+}
+.backgroundstyle{    
+    height: 660px;
+    width: 660px;
+    margin:auto;
+    background-position: relative;
+    background-image: url("vibecover2.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+}
+.topleft{
+    background-image: linear-gradient(to left, #2550af);
+}
+.topright{
+    background-image: linear-gradient(to right, #012472);
+}
+.titulo1{
+    text-align: center;
+    font-size: 120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.titulo2{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blackboldtext{
+    color:#000000;
+}
+.whiteboldtext{
+    color: #ffffff;
+}
+.yellowboldtext{
+    color: #e9c00c;
+}
+#menu li{
+    list-style-type: none;
+  }
+.fright{
+    float:right
+}
+.fleft{
+    float:left
+}
+.footer1{
+ text-align: justify;
+ position: absolute;
+ bottom: 5px;
+ background-color: #000000;
+
+}
+.bottomrigth1{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+.bottomleft1{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
