@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Puzzle</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body >
+    <h1 >Sliding Puzzle</h1>
+    <button id="boton-inicio" onclick="iniciar()" >iniciar</button>
+
+    <div id="movimientos">
+        <div class="cont">Cantidad de movimientos</div>
+        <div class="cont"> realizados:</div>
+        <div id="cant-mov">0</div>
+    </div>
+
+<div id="contenedor">    
+        <div class="cuadros" id="cero" onclick="mover(id)"></div>
+        <div class="cuadros" id="one" onclick="mover(id)"></div>
+        <div class="cuadros" id="two" onclick="mover(id)"></div>
+        <br>
+        <div class="cuadros" id="three" onclick="mover(id)"></div>
+        <div class="cuadros" id="four" onclick="mover(id)"></div>
+        <div class="cuadros" id="five" onclick="mover(id)"></div>
+        <br>
+        <div class="cuadros" id="six" onclick="mover(id)"></div>
+        <div class="cuadros" id="seven" onclick="mover(id)"></div>
+        <div class="cuadros" id="eight" onclick="mover(id)"></div>
+</div>
+    
+
+
+<script src="js.js"></script>
+</body>
+</html>
