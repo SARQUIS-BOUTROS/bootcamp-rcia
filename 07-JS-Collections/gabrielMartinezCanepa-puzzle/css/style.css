@@ -1,0 +1,33 @@
+/* https://codepen.io/gemanepa/full/JmMxYK/ */
+
+body {
+  background-color: #404040;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+button {
+  background-color: gray;
+  padding: 1.5vw;
+  text-align: center;
+  font-size: 3vw;
+  width: 70px;
+  height: 70px;
+  margin: 0.3vw;
+}
+
+main section button:active, main section button:focus{
+  outline: none;
+}
+
+

@@ -1,0 +1,93 @@
+/* https://codepen.io/gemanepa/full/xyqqGW/ */
+
+body {
+  background-color: #404040;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+main section:first-child,main section:nth-child(2) {
+  overflow: hidden;
+}
+
+input {
+  background: transparent;
+  border: transparent;
+  outline: none;
+}
+
+input#oldstate {
+  text-align: left;
+  position: absolute;
+}
+
+input#state {
+  margin-bottom: -1%;
+  /*background: transparent;*/
+  text-align: center;
+}
+
+button {
+  background-color: gray;
+  padding: 1.5vw;
+  text-align: center;
+  font-size: 3vw;
+}
+
+main section button:last-child{
+  background-color: darkorange;
+  color: white;
+}
+
+main section button:active, main section button:focus{
+  background-color: lightblue;
+  outline: none;
+}
+
+
+
+@media (max-width: 1199px) {
+  input#oldstate {
+    font-size: 25px;
+  }
+  
+  input#state {
+  font-size: 50px;
+  padding-left: 50px;
+}
+  button {
+    width: 25%;
+    height: 70px;
+    margin: 0.3vw;
+  }
+  main section:last-child button:first-child {
+    width: 50.5%}
+}
+
+
+@media (min-width: 1200px) {
+  input#oldstate {
+    height: 10%;
+    font-size:65px;
+  }
+  input#state {
+    height: 20%;
+    font-size:130px;
+    padding-left: 30%;
+  }
+
+  button {
+    width: 15%;
+    margin: 0.15% 0.15%;
+  }
+  main section:last-child button:first-child {width: 30.3%}
+}
