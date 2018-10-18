@@ -17,6 +17,10 @@ window.onload = function() {
   })
 };
 
+function getInfoCall(){
+	setTimeout(()=>{getInfo()})
+}
+
 async function getInfo(){
 
 	charList = document.getElementById("charList");
