@@ -7,7 +7,9 @@
 	<meta name="author" content="German A. Monzon">
 
 	<!-- Link to JS file -->
-	<script type="text/javascript" src="async.js"></script>
+	<script type="text/javascript" src="async2.js"></script>
+
+
 </head>
 <body>
 
@@ -17,23 +19,29 @@
 		</select>
 	</header>
 
-	<article>
-		<table style="width:100%; text-align:left;">
-  			<tr>
-    			<th>Character 1</th>
-    			<th>Planet 1</th> 
-    			<th>Starship 1</th>
-    			<th>Vehicle 1</th>
-    			<th>Specie 1</th>
-  			</tr>
-  			<tr>
-    			<td>Jill</td>
-    			<td>Smith</td> 
-    			<td>50</td>
-    			<td>Smith</td>
-    			<td>Smith</td>
-  			</tr>
-		</table>
+	<article style="display: flex;align-items: flex-start;">
+		<style>ul{display:inline-block;}</style>
+
+		<ul id="charList" style="list-style-type: none">
+			<li><strong>Character 1</strong></li>
+		</ul>
+
+		<ul id="planetList" style="list-style-type: none">
+			<li><strong>Planet 1</strong></li>
+		</ul>
+
+		<ul id="starshipList" style="list-style-type: none">
+			<li><strong>Starship 1</strong></li>
+		</ul>
+
+		<ul id="vehicleList" style="list-style-type: none">
+			<li><strong>Vehicle 1</strong></li>
+		</ul>
+
+		<ul id="specieList" style="list-style-type: none">
+			<li><strong>Specie 1</strong></li>
+		</ul>
+
 	</article>
 	
 </body>
