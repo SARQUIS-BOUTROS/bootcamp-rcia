@@ -77,13 +77,6 @@ class Task extends React.Component {
       className : 'collection-item'
     }
   }
-  /*check(e){
-    if(this.state.className.includes('checked')){
-      this.setState({className: "collection-item"});
-    }else{
-    this.setState({className: "collection-item checked grey lighten-1"});
-    }
-  }*/
   render(props){
     let ind = this.props.value;
     let cn = "";
