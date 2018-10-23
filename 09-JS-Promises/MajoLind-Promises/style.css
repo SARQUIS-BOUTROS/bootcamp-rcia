@@ -1,0 +1,13 @@
+#contenido{
+    margin-left: 35%;
+}
+
+#mas-info{
+    display: flex;
+}
+
+#characters, #info, #planets, #starships, #vehicles, #species{
+    display: none;
+    width: 20%;
+}
+
