@@ -1,36 +1,29 @@
 import React, { Component } from 'react';
-import SpotifyWebApi from 'spotify-web-api-js'
+import SpotifyWebApi from 'spotify-web-api-js';
+import { setArtistName, setAlbums } from "../../actionsCreators";
+import './artistListView.css';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom'
 
-var spotifyApi = new SpotifyWebApi();
+const spotifyApi = new SpotifyWebApi();
 
 
 class ArtistListView extends Component {
     constructor() {
         super()
-        const params = this.getHashParams()
-        const token = params.access_token;
-        if (token) {
-            spotifyApi.setAccessToken(token);
+        this.state = {
         }
     }
 
-    getHashParams() {
-        var hashParams = {};
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-            q = window.location.hash.substring(1);
-        while ( e = r.exec(q)) {
-            hashParams[e[1]] = decodeURIComponent(e[2]);
-        }
-        return hashParams;
+    componentDidMount () {
     }
-
-    getArtist() {
-        spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3')
-            .then(function(data) {
-                console.log('Artist information', data);
-            }, function(err) {
-                console.error(err);
-            });
+    getAlbums(artist) {
+        this.props.setArtistName(artist.name)
+        spotifyApi.getArtistAlbums(artist.id).then( data =>
+            this.props.setAlbums(data.items)
+    )
+    .catch(console.log('error'))
+      //  return <Redirect to='/artist-albums'  />
     }
 
 
@@ -38,10 +31,30 @@ class ArtistListView extends Component {
         return (
             <article className="artist-list-view">
                 Artist List
-                <button onClick={this.getArtist}>Artist</button>
+                <section>
+                    {this.props.list.map( artist =>
+                        <div className='card' key={artist.id}>
+                            <Link to={'/artist-albums'}>  <img className={'img'} src={artist.url} onClick={() => this.getAlbums(artist)}/></Link>
+                            <div className='description'>
+                                <div className={'artist'}>{artist.name}</div>
+                            </div>
+                        </div>
+                        )
+                    }
+                </section>
             </article>
         );
     }
+};
+
+function mapStateToProps(state) {
+    return {list: state.list}
 }
 
-export default ArtistListView;
+function mapDispatchToProps(dispatch) {
+    return {
+        setAlbums: (items) => dispatch(setAlbums(items)),
+        setArtistName: (artist_name) => dispatch(setArtistName(artist_name))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistListView);

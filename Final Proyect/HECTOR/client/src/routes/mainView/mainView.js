@@ -1,37 +1,24 @@
 import './mainView.css';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.svg';
-import SpotifyWebApi from 'spotify-web-api-js'
+import SpotifyWebApi from 'spotify-web-api-js';
+import HeaderView from '../headerView/headerView'
 
 const spotifyApi = new SpotifyWebApi();
-
 
 class MainView extends Component {
     constructor() {
         super()
-        const params = this.getHashParams()
-    }
+        var token = 'BQDp2o63emdoi9jfuglZhr_A6OZ00JhGaixowzVzG98X0__hx5UpTlGWOqkTmGkaXv_w3y_4pM2CzEjvWsFX8nKJnWq2tirysP3gK-1d9_odUVJKEr9UOF31C7TqjV190NBFEv4kIG1PnXf-XpMTlhqSL2XywTpBIu3UoGw-N-jmHfq2CmiPoBdF\n'
 
-    getHashParams() {
-        var hashParams = {};
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-            q = window.location.hash.substring(1);
-        while ( e = r.exec(q)) {
-            hashParams[e[1]] = decodeURIComponent(e[2]);
-        }
-        return hashParams;
+
+        spotifyApi.setAccessToken(token);
     }
 
     render() {
         return (
             <article className="main-view">
-                <header className="main-view__header">
-                    <img src={logo} className="main-view__logo" alt="logo" />
-                    <div className='App'>
-                        <a href='http://localhost:8888'> Login to Spotify </a>
-                    </div>
-                </header>
+                <HeaderView/>
                 <nav className="main-view__nav">
                     <ul>
                         <li><Link to="/">Home</Link></li>
