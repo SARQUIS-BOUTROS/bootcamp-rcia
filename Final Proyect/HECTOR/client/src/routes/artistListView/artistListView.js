@@ -1,31 +1,37 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { setArtistName, setAlbums } from "../../actionsCreators";
+import { setList} from "../../actionsCreators";
 import './artistListView.css';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom'
+import {Link, Redirect, withRouter} from 'react-router-dom'
 
 const spotifyApi = new SpotifyWebApi();
 
 
 class ArtistListView extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
         }
+        this.getResults = this.getResults.bind(this)
     }
 
-    componentDidMount () {
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.params.search !== this.props.match.params.search){
+            this.getResults()
+        }
+
     }
-    getAlbums(artist) {
-        this.props.setArtistName(artist.name)
-        spotifyApi.getArtistAlbums(artist.id).then( data =>
-            this.props.setAlbums(data.items)
-    )
-    .catch(console.log('error'))
-      //  return <Redirect to='/artist-albums'  />
+    componentDidMount(){
+        this.getResults()
     }
 
+    getResults() {
+        spotifyApi
+            .searchArtists(decodeURI(this.props.match.params.search))
+            .then(data => this.props.setList(data.artists.items))
+            .catch(console.log('error'));
+    }
 
     render() {
         return (
@@ -34,7 +40,7 @@ class ArtistListView extends Component {
                 <section>
                     {this.props.list.map( artist =>
                         <div className='card' key={artist.id}>
-                            <Link to={'/artist-albums'}>  <img className={'img'} src={artist.url} onClick={() => this.getAlbums(artist)}/></Link>
+                            <Link to={'/artist-albums/'+ artist.id}> <img className={'img'} src={artist.url}/></Link>
                             <div className='description'>
                                 <div className={'artist'}>{artist.name}</div>
                             </div>
@@ -48,13 +54,13 @@ class ArtistListView extends Component {
 };
 
 function mapStateToProps(state) {
-    return {list: state.list}
+    return {list: state.list,
+        seek:state.seek}
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        setAlbums: (items) => dispatch(setAlbums(items)),
-        setArtistName: (artist_name) => dispatch(setArtistName(artist_name))
+        setList: (list) => dispatch(setList(list)),
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ArtistListView);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ArtistListView));

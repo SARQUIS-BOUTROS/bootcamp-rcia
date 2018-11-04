@@ -6,8 +6,11 @@ var spotifyApi = new SpotifyWebApi();
 
 
 class AboutView extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        this.state= {
+            number: this.props.match.params.id
+        }
     }
 
     getPlaylist() {
@@ -23,7 +26,7 @@ class AboutView extends Component {
         return (
             <article className="about-view">
                 About View
-                <button onClick={this.getPlaylist}>Wep</button>
+                <button>{this.state.number}</button>
             </article>
         );
     }

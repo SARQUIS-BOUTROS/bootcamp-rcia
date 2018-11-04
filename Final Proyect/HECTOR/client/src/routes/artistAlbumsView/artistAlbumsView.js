@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { connect } from 'react-redux';
-import { setPlayList} from "../../actionsCreators"
+import {setAlbums, setArtistName, setPlayList} from "../../actionsCreators"
 import {Link} from "react-router-dom";
 
 
@@ -15,12 +15,17 @@ class ArtistAlbumsView extends Component {
         }
     }
 
-    getPlayList(play_list_id){
-        spotifyApi.getAlbum(play_list_id)
-            .then( data =>
-               this.props.setPlayList(data.tracks.items)
-            )
+    componentDidMount() {
+        console.log(this.props.match.params.albums)
+        this.getAlbums(this.props.match.params.albums)
     }
+    getAlbums(artist) {
+        spotifyApi.getArtistAlbums(artist).then( data =>
+            this.props.setAlbums(data.items)
+        )
+            .catch(console.log('error'))
+    }
+
     render() {
         return (
             <article className="artist-album-view">
@@ -28,7 +33,7 @@ class ArtistAlbumsView extends Component {
                 <section>
                     {this.props.albums.map( album =>
                         <div className='card' key={album.id}>
-                            <Link  to="/artist-albums"> <img className={'img'} src={album.images[0].url} onClick={() => {this.getPlayList(album.id)}}/></Link>
+                            <Link  to={"/album-playlist/"+ album.id}> <img className={'img'} src={album.images[0].url}/></Link>
                             <div className='description'>
                                 <div className={'artist'}>{album.name}</div>
                             </div>
@@ -49,9 +54,10 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        setPlayList: (play_list) => dispatch(setPlayList(play_list))
+        setAlbums: (items) => dispatch(setAlbums(items)),
+        //setArtistName: (artist_name) => dispatch(setArtistName(artist_name))
     }
 }
 
 
-export default connect (mapStateToProps, mapDispatchToProps)(ArtistAlbumsView);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistAlbumsView);
