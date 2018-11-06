@@ -1,0 +1,11 @@
+form {
+    display: block;
+    align-content: center;
+
+}
+input{
+    border-radius: 5px;
+}
+section {
+    margin: auto;
+}

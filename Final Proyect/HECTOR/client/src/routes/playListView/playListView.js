@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { connect } from 'react-redux';
-import {onPlay, setPlayList} from "../../actionsCreators";
+import './playListView.css';
+import '../shared/styles/card.css'
+import {onPlay, addTrack, initTrackList, sorted, setFavoriteCondition, favorites} from "../../actionsCreators";
 
 var spotifyApi = new SpotifyWebApi();
-
 
 class PlayListView extends Component {
     constructor() {
@@ -13,35 +14,82 @@ class PlayListView extends Component {
         }
     }
 
-    addFavorites(trackId) {
-        spotifyApi.addToMySavedTracks([trackId])
+    isFavorite(track) {
+        let trackId = track.track.id
+        let newState= '';
+        console.log(track.isFavorite[0].toString())
+        if (track.isFavorite[0] == false){
+            spotifyApi.addToMySavedTracks([trackId])
+                .then(data =>
+                    console.log('Added track!')).catch (console.log('error'))
+            newState = true;
+        } else if (track.isFavorite[0] == true)
+        {
+            spotifyApi.removeFromMySavedTracks([trackId])
+                .then(data =>
+                    console.log('track remove from favorites')).catch (console.log('error'))
+            newState = false;
+        }
+        this.props.setFavoriteCondition(track, newState);
+        this.forceUpdate();
+        spotifyApi.getMySavedTracks()
             .then(data =>
-                console.log('Added track!')).catch (console.log('error'))
+                this.props.favorites({data}))
+            .catch(console.log('error'));
     }
 
     componentDidMount(){
-        console.log(this.props.match.params.album)
-        this.getPlayList(this.props.match.params.album)
+
+        this.getPlayList(this.props.match.params.album);
+        this.props.initTrackList()
     }
 
-    getPlayList(play_list_id){
-        spotifyApi.getAlbum(play_list_id)
-            .then( data =>
-                this.props.setPlayList(data.tracks.items)
-            )
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.match.params.album !== this.props.match.params.album){
+            this.props.initTrackList()
+            this.getPlayList(this.props.match.params.album);
+        }
     }
-    render() {
+
+
+    getPlayList(playListId){
+        let list;
+       list = spotifyApi.getAlbum(playListId)
+            .then( data => data.tracks.items
+            )
+        list.then(data => this.getFavorites(data));
+    }
+    getFavorites(list) {
+        var cont = this;
+        list.forEach(function(element) {
+                spotifyApi.containsMySavedTracks([element.id])
+                    .then(data => cont.addTrack(element, data));
+        }
+        )
+    }
+
+    addTrack(element, data) {
+        this.props.addTrack(element, data)
+
+    }
+
+    sorted() {
+        this.props.sorted();
+        this.forceUpdate();
+    }
+        render() {
         return (
             <article className="">
                 Music Playlist
                 <section>
-                    {this.props.play_list.map( track =>
-                        <div className='card' key={track.id}>
+                    <button onClick={()=> this.sorted()}>Sorted  duration</button>
+                    {this.props.trackList.map( track =>
+                        <div className='card' key={track.track.id}>
                             <div className='description'>
-                                <div className={'artist'} onClick={() => this.props.onPlay(track.preview_url)}>{track.name}</div>
+                                <div className={'artist'} onClick={() => this.props.onPlay(track.track.preview_url)}>{track.track.name}</div>
                             </div>
-                            <button onClick={()=> this.addFavorites(track.id)}>Agregar</button>
-                            <button onClick={()=> this.checkInFavorites(track.id)}>Checkear</button>
+                            <i className={"material-icons isFavorite-"+track.isFavorite[0].toString()} onClick={()=> this.isFavorite(track)}>start</i>
                         </div>
                     )
                     }
@@ -54,15 +102,19 @@ class PlayListView extends Component {
 function mapStateToProps(state) {
 
     return {
-        play_list: state.play_list,
-        onplay: state.onplay
+        onplay: state.onplay,
+        trackList:state.trackList
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
         onPlay: (track) => dispatch(onPlay(track)),
-        setPlayList: (play_list) => dispatch(setPlayList(play_list))
+        addTrack: (track,isFavorite) => dispatch(addTrack(track,isFavorite)),
+        initTrackList: () => dispatch(initTrackList()),
+        sorted: () => dispatch(sorted()),
+        setFavoriteCondition: (track, newState) => dispatch(setFavoriteCondition(track, newState)),
+        favorites: (data) => dispatch(favorites(data)),
     }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(PlayListView);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayListView);

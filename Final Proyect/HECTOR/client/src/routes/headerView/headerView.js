@@ -1,5 +1,6 @@
 import {Component} from "react";
 import logo from "../../assets/logo.png";
+import { Link } from 'react-router-dom';
 import React from "react";
 import { setUserName } from "../../actionsCreators";
 import  './headerView.css';
@@ -26,14 +27,23 @@ class HeaderView extends Component {
 
         return (
             <header className="main-view__header">
-                <img src={logo} className="main-view__logo" alt="logo" />
-                <p className="name">  Hola { this.props.user_name } </p>
-                <SearchView/>
-                <ReactAudioPlayer
-                    src={this.props.onplay}
-                    autoPlay={true}
-                    controls
-                />
+                <section className={'data'}>
+                    <Link to='/'> <img src={logo} className="main-view__logo" alt="logo" /></Link>
+
+                </section>
+
+                <section className={'music'}>
+                    <h6 className="user"><i className="material-icons">face</i>Hola { this.props.user_name } </h6>
+                    <SearchView/>
+                    <ReactAudioPlayer
+                        src= {this.props.onplay}
+                        autoPlay={true}
+                        controls
+                        height= '200px'
+                        title={'perri loco'}
+                    />
+                </section>
+
             </header>
         );
     }

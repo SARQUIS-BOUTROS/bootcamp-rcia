@@ -1,16 +1,6 @@
 img {
     height: 100px;
     width: 100px;
-    display: inline-block;
-    float: left;
-}
-section {
-    display: flex;
-    flex: 0 1 25%;
-    background-color: cadetblue;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    flex-grow: 6;
 }
 
 div .card {

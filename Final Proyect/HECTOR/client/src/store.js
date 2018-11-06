@@ -32,19 +32,7 @@ let reducer = (state, action ) => {
             artist_name : action.artist_name
         }
     }
-    if(action.type ==='SET_PLAYLIST'){
-        return {
-            ...state,
-            play_list: action.play_list
-        }
-    }
-    if(action.type ==='SEEK'){
-        console.log(action.seek)
-        return {
-            ...state,
-            seek: action.seek
-        }
-    }
+
     if(action.type ==='FAVORITES'){
         return {
             ...state,
@@ -52,12 +40,49 @@ let reducer = (state, action ) => {
         }
     }
     if(action.type ==='ONPLAY'){
-        console.log(action.onplay)
         return {
             ...state,
             onplay: action.onplay
         }
     }
+    if(action.type ==='ADDTRACK'){
+        return {
+            ...state,
+            trackList: state.trackList.concat({'track': action.track, 'isFavorite':action.isFavorite})
+        }
+    }
+    if(action.type ==='INITTRACKLIST'){
+        return {
+            ...state,
+            trackList:action.trackList
+        }
+    }
+    if(action.type ==='DELETEFROMFAVORITES'){
+        let toDelete = action.deleteFromFavoritesId;
+        let fav = state.favorites.filter( function (element){ return toDelete != element.track.id})
+        return {
+            ...state,
+            favorites: fav
+        }
+    }
+    if(action.type ==='SORTED'){
+        let ordered = state.trackList.sort(function(a, b){return a.track.duration_ms - b.track.duration_ms })
+        return {
+            ...state,
+            trackList: ordered
+        }
+    }
+    if(action.type ==='SETFAVORITECONDITION'){
+        let newTrack = state.trackList.map(track => {
+            if(track.track.id === action.track.track.id){
+                return { ...track, isFavorite: [action.newState]}
+            }return track
+         })
+        return {
+            ...state,
+            trackList: newTrack
+        }
+    }
     return state;
 }
-export default createStore(reducer, {user_name:'',list:[], artist_name:'', albums:[],play_list:[],search:'', favorites:[], onplay:''});
+export default createStore(reducer, {user_name:'',list:[], artist_name:'', albums:[],search:'', favorites:[], onplay:'',trackList:[]});

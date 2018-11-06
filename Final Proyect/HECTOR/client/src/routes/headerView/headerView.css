@@ -1,6 +1,34 @@
-.name {
-    display: inline;
+header {
+    display: flex;
+    flex-direction: column;
 }
-.result {
-    display: inline;
+
+h6 {
+    margin:0;
+    padding: auto;
+}
+
+.user {
+    display: block;
+    float: right;
+}
+.data {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+audio {
+    margin-top: 15px;
+    color: transparent;
+    margin:auto;
+    margin-top: 5px;
+
+}
+.music {
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    justify-content: center;
 }

@@ -48,10 +48,10 @@ const setAlbums = albums => {
         albums: albums
     };
 };
-const setPlayList = play_list => {
+const setPlayList = playList => {
     return {
         type: 'SET_PLAYLIST',
-        play_list: play_list
+        playList: playList
     };
 };
 
@@ -76,4 +76,52 @@ const onPlay = onplay => {
     };
 };
 
-export {setUserName ,setList, setArtistName, setAlbums, setPlayList, seek, favorites, onPlay};
+const addTrack = (track, isFavorite) => {
+    return {
+        type: 'ADDTRACK',
+        track: track,
+        isFavorite:isFavorite
+    };
+};
+const initTrackList = () => {
+    return {
+        type: 'INITTRACKLIST',
+        trackList:[]
+    };
+};
+const deleteFromFavorites = deleteFromFavoritesId => {
+    return {
+        type: 'DELETEFROMFAVORITES',
+        deleteFromFavoritesId:deleteFromFavoritesId
+    };
+};
+
+const sorted=()=>{
+    console.log('action')
+    return {
+        type:'SORTED'
+    };
+};
+
+const setFavoriteCondition=(track, newState)=>{
+    console.log(track, newState)
+    return {
+        type:'SETFAVORITECONDITION',
+        track:track,
+        newState:newState
+    };
+};
+
+export {setUserName,
+    setList,
+    setArtistName,
+    setAlbums,
+    setPlayList,
+    seek,
+    favorites,
+    onPlay,
+    addTrack,
+    initTrackList,
+    deleteFromFavorites,
+    sorted,
+    setFavoriteCondition};

@@ -1,8 +1,9 @@
 import {Component} from "react";
 import React from "react";
 import { connect } from 'react-redux';
-import { Redirect, Link, withRouter} from "react-router-dom";
-import {seek, setList} from "../../../actionsCreators";
+import { withRouter} from "react-router-dom";
+import {seek} from "../../../actionsCreators";
+import './searchView.css'
 
 class SearchView extends Component {
     constructor() {
@@ -19,20 +20,21 @@ class SearchView extends Component {
 
         this.setState({ query: this.search.value });
         console.log(this.state.nextURL + this.state.query);
-        this.props.seek(this.state.query);
-        this.props.history.push(encodeURI(this.state.nextURL+this.state.query));
+        this.props.history.push(encodeURI(this.state.nextURL+''+this.state.query));
     }
 
     render() {
         return (
                 <form>
-                    <p className="result">Resultados para {this.state.query}</p>
-                    <input
-                        placeholder="Search for..."
-                        ref={input => this.search = input}
-                        onChange={this.handleInputChange}
-                    />
-                    <button>Search</button>
+                    <h6 className="result">Resultados para {this.state.query}</h6>
+                    <section>
+                        <i className="material-icons">search</i>
+                        <input
+                            placeholder="Search for..."
+                            ref={input => this.search = input}
+                            onChange={this.handleInputChange}
+                        />
+                    </section>
                 </form>
         );
     }

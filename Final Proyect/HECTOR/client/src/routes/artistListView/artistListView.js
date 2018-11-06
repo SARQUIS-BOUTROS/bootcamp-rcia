@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { setList} from "../../actionsCreators";
+import { setList } from "../../actionsCreators";
 import './artistListView.css';
 import { connect } from 'react-redux';
 import {Link, Redirect, withRouter} from 'react-router-dom'
@@ -33,6 +33,7 @@ class ArtistListView extends Component {
             .catch(console.log('error'));
     }
 
+
     render() {
         return (
             <article className="artist-list-view">
@@ -54,8 +55,7 @@ class ArtistListView extends Component {
 };
 
 function mapStateToProps(state) {
-    return {list: state.list,
-        seek:state.seek}
+    return {list: state.list}
 }
 
 function mapDispatchToProps(dispatch) {
