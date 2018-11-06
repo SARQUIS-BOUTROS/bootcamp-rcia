@@ -10,9 +10,12 @@ const spotifyApi = new SpotifyWebApi();
 class MainView extends Component {
     constructor() {
         super()
-        var token = 'BQD-YRlIh9_ia0bgu0d1la54pwe3tf2jFKHGvPF_TtW6T_I_uavKsEZmKeXaFPKYJYOG81HuyTEllb51V26fstZ3yb0m-PsRqNYl7bd0QgEID0WpuARXjzx-7U_bRNFHXNhAB04UyVUWYf8EQyp-JWs_EP479jd7ZhqTimm-JWu7KMeKhopRvbhtFYCL5dRwmBlTV6TxRVBoGw\n'
+        var token = 'BQCxaNa8kWL9nts5WBn_iHDeC4HcdQj88yC57vXjkRNfFaoG-4fNZdc1IqjGtp5msOqLrV6PJSM3NRupb4TR5675xQ31N6ULJTFpcWtIIktT6pBBZ8_aQvwGBNoUcsykwqVb_e5eMS1cOTX58mk-oBF_KQaH_K1kTgBDAMLJ8INlMQiHUH0Wsi0t7SlacFr5p1FqoUuypegArw\n'
         spotifyApi.setAccessToken(token);
     }
+    /*
+    Get favorites songs.
+     */
     componentDidMount() {
         spotifyApi.getMySavedTracks()
             .then(data =>

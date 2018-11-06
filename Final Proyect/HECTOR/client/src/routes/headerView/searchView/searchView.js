@@ -2,7 +2,6 @@ import {Component} from "react";
 import React from "react";
 import { connect } from 'react-redux';
 import { withRouter} from "react-router-dom";
-import {seek} from "../../../actionsCreators";
 import './searchView.css'
 
 class SearchView extends Component {
@@ -15,11 +14,17 @@ class SearchView extends Component {
         document.title = "Spoty | Búsqueda";
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-
+    /*
+    Handle textbox from searchs.
+     */
     handleInputChange() {
-
+        /*
+        https://stackoverflow.com/questions/53127727/axios-api-search-function-is-returning-everything
+         */
         this.setState({ query: this.search.value });
-        console.log(this.state.nextURL + this.state.query);
+        /*
+        Redirect to /artist-list/:artist.
+         */
         this.props.history.push(encodeURI(this.state.nextURL+''+this.state.query));
     }
 
@@ -41,12 +46,11 @@ class SearchView extends Component {
 }
 
 function mapStateToProps(state) {
-    return {list: state.list}
+    return {}
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        seek: (list) => dispatch(seek(list))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps) (withRouter(SearchView));

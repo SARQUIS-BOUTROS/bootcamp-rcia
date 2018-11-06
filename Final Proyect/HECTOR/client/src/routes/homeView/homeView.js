@@ -13,7 +13,9 @@ class HomeView extends Component {
         }
         document.title = "Spoty | Favoritos ";
     }
-
+    /*
+    Remove song from fovorites.
+     */
     removeTrackLIst(trackId) {
         spotifyApi.removeFromMySavedTracks([trackId]).then(data => this.props.deleteFromFavorites(trackId)).catch('error');
     }

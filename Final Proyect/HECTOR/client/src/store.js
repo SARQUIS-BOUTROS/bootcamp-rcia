@@ -3,7 +3,6 @@ import { createStore } from 'redux';
 let reducer = (state, action ) => {
 
     if (action.type === 'SET_USER_NAME') {
-        console.log(action.user_name)
         return {
             ...state,
             user_name : action.user_name
@@ -19,7 +18,6 @@ let reducer = (state, action ) => {
     }
 
     if (action.type === 'SET_LIST') {
-        console.log(action.list)
         return {
             ...state,
             list : action.list

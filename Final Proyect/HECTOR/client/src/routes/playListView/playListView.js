@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { connect } from 'react-redux';
-import '../shared/styles/card.css'
+import '../shared/styles/card.css';
+import Moment from 'react-moment';
 import {onPlay, addTrack, initTrackList, sorted, setFavoriteCondition, favorites} from "../../actionsCreators";
 
 var spotifyApi = new SpotifyWebApi();
@@ -44,7 +45,9 @@ class PlayListView extends Component {
         this.props.initTrackList()
     }
 
-
+    /*
+    If id's album change, the component must restart and must trigger new search for tracklist from album
+     */
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.album !== this.props.match.params.album){
             this.props.initTrackList()
@@ -82,12 +85,15 @@ class PlayListView extends Component {
         return (
             <article>
                 Music Playlist
-                <button onClick={()=> this.sorted()}>Sorted  duration</button>
+                <i className={"material-icons"} onClick={()=> this.sorted() }>reorder</i>
+
                 <section className={'cards-content'}>
                     {this.props.trackList.map( track =>
                         <div className='card' key={track.track.id}>
                             <div className='description'>
                                 <div className={'track'} onClick={() => this.props.onPlay(track.track.preview_url)}>{track.track.name}</div>
+                                <div className={'duration'}>{ track.track.duration_ms}</div>
+                                <Moment format="mm:ss">{track.track.duration_ms}</Moment>
                                 <i className={"material-icons isFavorite "+track.isFavorite[0].toString()} onClick={()=> this.isFavorite(track)}>start</i>
                             </div>
                         </div>
@@ -95,9 +101,10 @@ class PlayListView extends Component {
                     }
                 </section>
             </article>
-        );
+        )
     }
 }
+
 
 
 function mapStateToProps(state) {

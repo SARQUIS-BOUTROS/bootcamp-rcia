@@ -17,16 +17,23 @@ class ArtistListView extends Component {
         this.getResults = this.getResults.bind(this)
     }
 
+    /*
+    Detect change in url and trigger new search with getResults().
+     */
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.search !== this.props.match.params.search){
             this.getResults()
         }
 
     }
-    componentDidMount(){
+
+     componentDidMount(){
         this.getResults()
     }
 
+    /*
+    Artist's Name is in URL. The component must take from there
+     */
     getResults() {
         spotifyApi
             .searchArtists(decodeURI(this.props.match.params.search))
@@ -64,4 +71,7 @@ function mapDispatchToProps(dispatch) {
         setList: (list) => dispatch(setList(list)),
     }
 }
+/*
+https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/withRouter.md
+ */
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ArtistListView));

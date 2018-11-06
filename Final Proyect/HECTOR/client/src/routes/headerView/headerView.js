@@ -40,7 +40,6 @@ class HeaderView extends Component {
                         autoPlay={true}
                         controls
                         height= '200px'
-                        title={'perri loco'}
                     />
                 </section>
 

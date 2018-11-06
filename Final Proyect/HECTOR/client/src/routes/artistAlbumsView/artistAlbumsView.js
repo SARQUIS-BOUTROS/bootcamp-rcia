@@ -16,8 +16,10 @@ class ArtistAlbumsView extends Component {
         document.title = "Spoty | Albums ";
     }
 
+    /*
+    Get Album selected from URL
+     */
     componentDidMount() {
-        console.log(this.props.match.params.albums)
         this.getAlbums(this.props.match.params.albums)
     }
     getAlbums(artist) {
@@ -56,7 +58,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setAlbums: (items) => dispatch(setAlbums(items)),
-        //setArtistName: (artist_name) => dispatch(setArtistName(artist_name))
     }
 }
 
