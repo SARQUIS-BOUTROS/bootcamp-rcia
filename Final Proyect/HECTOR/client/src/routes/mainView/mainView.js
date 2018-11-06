@@ -10,7 +10,7 @@ const spotifyApi = new SpotifyWebApi();
 class MainView extends Component {
     constructor() {
         super()
-        var token = 'BQACq8Da8liMygWPaCngoKW4Y6QoQEeyW5Ev48JIMrMz57_frX3SbwWySBu3ltGSTHySI563qjAt4Ekc_GPktS9E-P3-_Zh_EJ5XQxjEN3_ul6yxrs9dX62-PQOUFv-QQooFRd_68cfdF7mK_T0lt-mh7hb2t-FFtZpAjLoPz06RrKEdfDZ0kiI2UxOgdcWTnmKYKfYmOGedPQ\n'
+        var token = 'BQD-YRlIh9_ia0bgu0d1la54pwe3tf2jFKHGvPF_TtW6T_I_uavKsEZmKeXaFPKYJYOG81HuyTEllb51V26fstZ3yb0m-PsRqNYl7bd0QgEID0WpuARXjzx-7U_bRNFHXNhAB04UyVUWYf8EQyp-JWs_EP479jd7ZhqTimm-JWu7KMeKhopRvbhtFYCL5dRwmBlTV6TxRVBoGw\n'
         spotifyApi.setAccessToken(token);
     }
     componentDidMount() {

@@ -12,7 +12,7 @@ class SearchView extends Component {
             query: '',
             nextURL:'/artist-list/'
         };
-
+        document.title = "Spoty | Búsqueda";
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
@@ -27,14 +27,14 @@ class SearchView extends Component {
         return (
                 <form>
                     <h6 className="result">Resultados para {this.state.query}</h6>
-                    <section>
+                    <nav>
                         <i className="material-icons">search</i>
                         <input
                             placeholder="Search for..."
                             ref={input => this.search = input}
                             onChange={this.handleInputChange}
                         />
-                    </section>
+                    </nav>
                 </form>
         );
     }

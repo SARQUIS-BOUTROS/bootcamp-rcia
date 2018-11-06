@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { connect } from 'react-redux';
-import {setAlbums, setArtistName, setPlayList} from "../../actionsCreators"
+import {setAlbums } from "../../actionsCreators"
 import {Link} from "react-router-dom";
-
+import '../shared/styles/card.css';
 
 var spotifyApi = new SpotifyWebApi();
 
@@ -13,6 +13,7 @@ class ArtistAlbumsView extends Component {
         super()
         this.state = {
         }
+        document.title = "Spoty | Albums ";
     }
 
     componentDidMount() {
@@ -28,14 +29,14 @@ class ArtistAlbumsView extends Component {
 
     render() {
         return (
-            <article className="artist-album-view">
+            <article>
                 Artist Album
-                <section>
+                <section className={'cards-content'}>
                     {this.props.albums.map( album =>
                         <div className='card' key={album.id}>
                             <Link  to={"/album-playlist/"+ album.id}> <img className={'img'} src={album.images[0].url}/></Link>
                             <div className='description'>
-                                <div className={'artist'}>{album.name}</div>
+                                <div className={'album'}>{album.name}</div>
                             </div>
                         </div>
                     )

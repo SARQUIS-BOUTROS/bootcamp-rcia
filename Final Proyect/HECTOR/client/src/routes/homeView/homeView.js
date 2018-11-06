@@ -10,8 +10,8 @@ class HomeView extends Component {
     constructor() {
         super();
         this.state = {
-
         }
+        document.title = "Spoty | Favoritos ";
     }
 
     removeTrackLIst(trackId) {
@@ -22,16 +22,16 @@ class HomeView extends Component {
         return (
             <article>
                 Favorite Song
-                <section>
+                <section className={'cards-content'}>
                     {this.props.favorites.map( favorite =>
                         <div className='card' key={favorite.track.id}>
                             <img className={'img'} src={favorite.track.album.images[0].url}
                                  onClick={() => this.props.onPlay(favorite.track.preview_url)}/>
                             <div className='description'>
-                                <div>{favorite.track.album.name}</div>
-                                <div className={'artist'}>{favorite.track.name}</div>
+                                <div className={'album'}>{favorite.track.album.name}</div>
+                                <div className={'track'}>{favorite.track.name}</div>
+                                <i className={"material-icons isFavorite true"} onClick={()=> this.removeTrackLIst(favorite.track.id)}>start</i>
                             </div>
-                            <button onClick={()=>this.removeTrackLIst(favorite.track.id)}>Remove</button>
                         </div>
                     )
                     }

@@ -1,6 +1,46 @@
-.add-true {
-    display:none
+.isFavorite {
+    display: flex;
+    align-self: flex-start;
 }
-.isFavorite-true {
+.true {
     color: yellow;
+}
+.img {
+    height: 100px;
+    width: 100px;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    border-radius: 5px;
+    border-color: black;
+    padding: 5px;
+    margin: 5px;
+    background-color: midnightblue;
+    flex-wrap: nowrap;
+}
+
+.cards-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.description {
+    display: flex;
+    padding-left: 5px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.album, .gene, .artist, .track {
+    display: flex;
+    word-wrap: break-word;
+}
+
+@media only screen and (max-width: 693px) {
+.card {
+    width: 80%;
+}
 }

@@ -12,19 +12,26 @@ const setList = items => {
     items.forEach(function(element) {
         let i ;
         let img;
+        let gen ='';
+        let record = element.genres;
         try {
             img = element.images[0].url}
             catch (e) {
             img = undefined
         };
+
         if(img === undefined) {
             img =  img_default
-        }
+        };
+        record.forEach(function(g) {
+            gen = gen + g
+        })
         i = {
             name: element.name,
             url: img,
             href: element.href,
-            id: element.id
+            id: element.id,
+            gene:gen
         }
             list.push(i)
          }

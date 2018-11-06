@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { setList } from "../../actionsCreators";
-import './artistListView.css';
+import '../shared/styles/card.css';
 import { connect } from 'react-redux';
-import {Link, Redirect, withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -13,6 +13,7 @@ class ArtistListView extends Component {
         super(props)
         this.state = {
         }
+        document.title = "Spoty | Resultados ";
         this.getResults = this.getResults.bind(this)
     }
 
@@ -36,14 +37,14 @@ class ArtistListView extends Component {
 
     render() {
         return (
-            <article className="artist-list-view">
-                Artist List
-                <section>
+            <article>
+                <section className={'cards-content'}>
                     {this.props.list.map( artist =>
                         <div className='card' key={artist.id}>
                             <Link to={'/artist-albums/'+ artist.id}> <img className={'img'} src={artist.url}/></Link>
                             <div className='description'>
                                 <div className={'artist'}>{artist.name}</div>
+                                <div className={'gene'}>{ artist.gene }</div>
                             </div>
                         </div>
                         )

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { connect } from 'react-redux';
-import './playListView.css';
 import '../shared/styles/card.css'
 import {onPlay, addTrack, initTrackList, sorted, setFavoriteCondition, favorites} from "../../actionsCreators";
 
@@ -12,6 +11,7 @@ class PlayListView extends Component {
         super()
         this.state = {
         }
+        document.title = "Spoty | Playlist ";
     }
 
     isFavorite(track) {
@@ -80,16 +80,16 @@ class PlayListView extends Component {
     }
         render() {
         return (
-            <article className="">
+            <article>
                 Music Playlist
-                <section>
-                    <button onClick={()=> this.sorted()}>Sorted  duration</button>
+                <button onClick={()=> this.sorted()}>Sorted  duration</button>
+                <section className={'cards-content'}>
                     {this.props.trackList.map( track =>
                         <div className='card' key={track.track.id}>
                             <div className='description'>
-                                <div className={'artist'} onClick={() => this.props.onPlay(track.track.preview_url)}>{track.track.name}</div>
+                                <div className={'track'} onClick={() => this.props.onPlay(track.track.preview_url)}>{track.track.name}</div>
+                                <i className={"material-icons isFavorite "+track.isFavorite[0].toString()} onClick={()=> this.isFavorite(track)}>start</i>
                             </div>
-                            <i className={"material-icons isFavorite-"+track.isFavorite[0].toString()} onClick={()=> this.isFavorite(track)}>start</i>
                         </div>
                     )
                     }
@@ -98,6 +98,7 @@ class PlayListView extends Component {
         );
     }
 }
+
 
 function mapStateToProps(state) {
 
